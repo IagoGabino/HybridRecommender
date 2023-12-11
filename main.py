@@ -27,23 +27,19 @@ class DataProcessor:
         self.ratings = ratings
 
     def filter_box_office(self, box_office):
-        
         if box_office == 'N/A':
             return 'insignificante'
 
         if type(box_office) == str:
-            valor_monetario_limpo = box_office.replace('$', '').replace(',', '')
-            valor_monetario_int = int(valor_monetario_limpo)
-
+            cleaned_monetary_value = box_office.replace('$', '').replace(',', '')
+            int_monetary_value = int(cleaned_monetary_value)
         else:
-            valor_monetario_int = box_office
+            int_monetary_value = box_office
 
-        if valor_monetario_int < 927821:
+        if int_monetary_value < 927821:
             return 'baixo'
-        
-        elif valor_monetario_int < 17588670:
+        elif int_monetary_value < 17588670:
             return 'medio'
-        
         else:
             return 'alto'
         
